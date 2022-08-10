@@ -15,4 +15,9 @@ header {
   background: #fff;
 }
 
+.delete-button{
+  margin: 0 auto;
+  display: block;
+}
+
 

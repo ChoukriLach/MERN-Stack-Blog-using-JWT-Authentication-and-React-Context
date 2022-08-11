@@ -10,6 +10,7 @@ const WorkoutForm = () => {
   const [reps , setRefs ] = useState('')
   const [load , setLoad ] = useState('')
   const [error , setError ] = useState('')
+  const [emptyFields , setEmptyFields ] = useState([])
 
   const handleSubmit = async (e) => {
      e.preventDefault()
@@ -28,6 +29,7 @@ const WorkoutForm = () => {
 
      if(!response.ok){
          setError(json.error)
+         setEmptyFields(json.emptyFields)
      } 
          
      if(response.ok){
@@ -35,6 +37,7 @@ const WorkoutForm = () => {
          setRefs('')
          setLoad('')
          setError(null)
+         setEmptyFields([])
          dispatch({type:'CREATE_WORKOUT',payload:json})
      }
 
@@ -44,15 +47,15 @@ const WorkoutForm = () => {
     <Form onSubmit={handleSubmit}>
         <h3>Add a new workout</h3>
         <Form.Group className="mb-3">
-            <Form.Control type="text" placeholder="Title" onChange={(e)=> setTitle(e.target.value)} value={title}/>
+            <Form.Control type="text" placeholder="Title" onChange={(e)=> setTitle(e.target.value)} value={title} className={emptyFields.includes('title') ? 'error' : ''}/>
         </Form.Group>
 
         <Form.Group className="mb-3">
-            <Form.Control type="number" placeholder="Reps" onChange={(e)=> setRefs(e.target.value)} value={reps}/>
+            <Form.Control type="number" placeholder="Reps" onChange={(e)=> setRefs(e.target.value)} value={reps} className={emptyFields.includes('reps') ? 'error' : ''}/>
         </Form.Group>
 
         <Form.Group className="mb-3">
-            <Form.Control type="number" placeholder="Load" onChange={(e)=> setLoad(e.target.value)} value={load}/>
+            <Form.Control type="number" placeholder="Load" onChange={(e)=> setLoad(e.target.value)} value={load} className={emptyFields.includes('load') ? 'error' : ''}/>
         </Form.Group>
         <Button variant="danger" type="submit">Submit</Button>
         {error && 

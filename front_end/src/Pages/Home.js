@@ -5,6 +5,7 @@ import WorkoutForm from '../Components/WorkoutForm'
 import { useWorkoutsContext } from '../Hooks/useWorkoutsContext'
 
 
+
 const Home = () => {
 
   const {workouts,dispatch} = useWorkoutsContext()
@@ -31,7 +32,7 @@ const Home = () => {
              <WorkoutCard key={workout._id} workout={workout}/>
           ))}
         </Col>
-        <Col sm={4} style={{marginTop:"100px"}}>
+        <Col sm={4} style={{marginTop:"70px"}}>
            <WorkoutForm/>
         </Col>
       </Row>

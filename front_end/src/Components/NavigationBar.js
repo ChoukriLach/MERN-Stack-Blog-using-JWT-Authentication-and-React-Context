@@ -19,7 +19,6 @@ function NavigationBar() {
                 </Navbar.Brand>
               </h3>
               <Nav>
-                  <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/Signup">Signup</Nav.Link>
                   <Nav.Link href="/Login">Login</Nav.Link>
               </Nav>

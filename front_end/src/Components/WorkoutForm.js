@@ -1,7 +1,10 @@
 import { Form , Button , Alert} from 'react-bootstrap'
 import {useState} from 'react'
+import { useWorkoutsContext } from '../Hooks/useWorkoutsContext'
 
 const WorkoutForm = () => {
+
+  const {dispatch} = useWorkoutsContext()
 
   const [title , setTitle ] = useState('')
   const [reps , setRefs ] = useState('')
@@ -32,6 +35,7 @@ const WorkoutForm = () => {
          setRefs('')
          setLoad('')
          setError(null)
+         dispatch({type:'CREATE_WORKOUT',payload:json})
      }
 
   }

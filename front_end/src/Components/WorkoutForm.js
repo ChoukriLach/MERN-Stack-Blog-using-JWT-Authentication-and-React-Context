@@ -57,7 +57,7 @@ const WorkoutForm = () => {
         <Form.Group className="mb-3">
             <Form.Control type="number" placeholder="Load" onChange={(e)=> setLoad(e.target.value)} value={load} className={emptyFields.includes('load') ? 'error' : ''}/>
         </Form.Group>
-        <Button variant="danger" type="submit">Submit</Button>
+        <Button variant="danger" type="submit">Add new workout</Button>
         {error && 
             <Alert key="danger" variant="danger" style={{marginTop:"20px"}}>
               {error}

@@ -44,26 +44,27 @@ const WorkoutForm = () => {
   }
   
   return (
-    <Form onSubmit={handleSubmit}>
-        <h3>Add a new workout</h3>
-        <Form.Group className="mb-3">
-            <Form.Control type="text" placeholder="Title" onChange={(e)=> setTitle(e.target.value)} value={title} className={emptyFields.includes('title') ? 'error' : ''}/>
-        </Form.Group>
+    <div className='d-flex justify-content-center alig'>
+        <Form onSubmit={handleSubmit} className="rounded p-4 p-sm-3">
+            <Form.Group className="mb-3">
+                <Form.Control type="text" placeholder="Title" onChange={(e)=> setTitle(e.target.value)} value={title} className={emptyFields.includes('title') ? 'error' : ''}/>
+            </Form.Group>
 
-        <Form.Group className="mb-3">
-            <Form.Control type="number" placeholder="Reps" onChange={(e)=> setRefs(e.target.value)} value={reps} className={emptyFields.includes('reps') ? 'error' : ''}/>
-        </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Control type="number" placeholder="Reps" onChange={(e)=> setRefs(e.target.value)} value={reps} className={emptyFields.includes('reps') ? 'error' : ''}/>
+            </Form.Group>
 
-        <Form.Group className="mb-3">
-            <Form.Control type="number" placeholder="Load" onChange={(e)=> setLoad(e.target.value)} value={load} className={emptyFields.includes('load') ? 'error' : ''}/>
-        </Form.Group>
-        <Button variant="danger" type="submit">Add new workout</Button>
-        {error && 
-            <Alert key="danger" variant="danger" style={{marginTop:"20px"}}>
-              {error}
-            </Alert>
-        }
-    </Form>
+            <Form.Group className="mb-3">
+                <Form.Control type="number" placeholder="Load" onChange={(e)=> setLoad(e.target.value)} value={load} className={emptyFields.includes('load') ? 'error' : ''}/>
+            </Form.Group>
+            <Button variant="danger" type="submit">Add new workout</Button>
+            {error && 
+                <Alert key="danger" variant="danger" style={{marginTop:"20px"}}>
+                {error}
+                </Alert>
+            }
+        </Form>
+    </div>
   )
 }
 

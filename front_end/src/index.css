@@ -6,6 +6,7 @@
 
 body {
   background: #f1f1f1;
+  background-color: rgba(0, 0, 0, 0.2);
   margin: 0;
   font-family: "Poppins";
 }
@@ -22,5 +23,18 @@ header {
 .error {
   border: 1px solid var(--error);
 }
+
+.login_signup_form{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: normal;
+}
+
+form {
+  background-color: white;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
 
 

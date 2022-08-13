@@ -7,7 +7,11 @@ const {
     updateWorkout
 } = require('../Controllers/workoutController')
 
+const userMiddleware = require('../Middlewares/userMiddleware')
+
 const router = express.Router()
+
+router.use(userMiddleware)
 
 router.get('/',getWorkouts)
 

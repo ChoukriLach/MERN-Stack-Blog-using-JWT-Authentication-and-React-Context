@@ -1,11 +1,12 @@
 import { Form , Button , Alert} from 'react-bootstrap'
 import {useState} from 'react'
 import { useWorkoutsContext } from '../Hooks/useWorkoutsContext'
+import { useUsersContext } from '../Hooks/useUsersContext'
 
 const WorkoutForm = () => {
 
   const {dispatch} = useWorkoutsContext()
-
+  const {user} = useUsersContext()
   const [title , setTitle ] = useState('')
   const [reps , setRefs ] = useState('')
   const [load , setLoad ] = useState('')
@@ -15,12 +16,18 @@ const WorkoutForm = () => {
   const handleSubmit = async (e) => {
      e.preventDefault()
 
+     if(!user){
+        setError('You must be logged in')
+        return 
+     }
+
      const workout = {title,reps,load}
 
      const response = await fetch('/api/workouts/',{
          method :'POST',
          body : JSON.stringify(workout),
          headers : {
+            'Authorization': `Bearer ${user.token}`,
             'Content-Type': 'application/json'
          }
      })

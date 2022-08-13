@@ -1,14 +1,17 @@
 import {Container,Nav,Navbar,Button} from 'react-bootstrap'
 import App_Logo from '../assets/images/App_Logo.png'
 import { useUsersContext } from '../Hooks/useUsersContext'
+import { useWorkoutsContext } from '../Hooks/useWorkoutsContext'
 
 function NavigationBar() {
 
-  const {dispatch} = useUsersContext()
+  const {user,dispatch} = useUsersContext()
+  const {dispatch : workoutDispatch} = useWorkoutsContext()
 
   const handleClick = () => {
       localStorage.removeItem('user')
       dispatch({type:'LOGOUT'})
+      workoutDispatch({type:'SET_WORKOUTS',payload:null})
   }
 
   return (
@@ -27,13 +30,19 @@ function NavigationBar() {
                   log
                 </Navbar.Brand>
               </h3>
-              <Nav>
-                <Button variant="outline-success" onClick={handleClick}>Logout</Button>
-              </Nav>
-              <Nav>
+              {user && 
+                <Nav>
+                  <Button variant="outline-danger" style={{marginRight:"10px"}}>Welcome : {user.email}</Button>
+                  <Button variant="outline-success" onClick={handleClick}>Logout</Button>
+                </Nav>
+              }
+              {!user && 
+                <Nav>
                   <Nav.Link href="/Signup">Signup</Nav.Link>
                   <Nav.Link href="/Login">Login</Nav.Link>
-              </Nav>       
+                </Nav>
+              }
+               
             </Container>
         </Navbar>
      </header>

@@ -1,19 +1,25 @@
 import {useEffect} from 'react'
-import { Container , Row , Col } from 'react-bootstrap'
+import { Container , Row , Col} from 'react-bootstrap'
 import WorkoutCard from '../Components/WorkoutCard'
 import WorkoutForm from '../Components/WorkoutForm'
 import { useWorkoutsContext } from '../Hooks/useWorkoutsContext'
+import { useUsersContext } from '../Hooks/useUsersContext'
 
 
 
 const Home = () => {
 
   const {workouts,dispatch} = useWorkoutsContext()
+  const {user} = useUsersContext()
 
   useEffect(()=>{
 
     const fetchWorkouts = async () => {
-        const response = await fetch('/api/workouts/')
+        const response = await fetch('/api/workouts/',{
+          headers:{
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
         const json = await response.json()
 
         if (response.ok) {
@@ -21,8 +27,10 @@ const Home = () => {
         }
     }
 
-    fetchWorkouts()  
-  },[dispatch])
+    if (user) {
+      fetchWorkouts()
+    }  
+  },[dispatch,user])
 
   return (
      <Container>
@@ -36,7 +44,7 @@ const Home = () => {
            <WorkoutForm/>
         </Col>
       </Row>
-     </Container>
+     </Container>  
   )
 }
 

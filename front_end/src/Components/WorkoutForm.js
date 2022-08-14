@@ -8,7 +8,7 @@ const WorkoutForm = () => {
   const {dispatch} = useWorkoutsContext()
   const {user} = useUsersContext()
   const [title , setTitle ] = useState('')
-  const [reps , setRefs ] = useState('')
+  const [reps , setReps ] = useState('')
   const [load , setLoad ] = useState('')
   const [error , setError ] = useState('')
   const [emptyFields , setEmptyFields ] = useState([])
@@ -41,7 +41,7 @@ const WorkoutForm = () => {
          
      if(response.ok){
          setTitle('')
-         setRefs('')
+         setReps('')
          setLoad('')
          setError(null)
          setEmptyFields([])
@@ -58,7 +58,7 @@ const WorkoutForm = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Control type="number" placeholder="Reps" onChange={(e)=> setRefs(e.target.value)} value={reps} className={emptyFields.includes('reps') ? 'error' : ''}/>
+                <Form.Control type="number" placeholder="Reps" onChange={(e)=> setReps(e.target.value)} value={reps} className={emptyFields.includes('reps') ? 'error' : ''}/>
             </Form.Group>
 
             <Form.Group className="mb-3">

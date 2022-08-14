@@ -2,6 +2,7 @@ import {BrowserRouter,Route,Routes,Navigate} from 'react-router-dom'
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
+import Workout from './Pages/Workout'
 import NavigationBar from './Components/NavigationBar';
 import { useUsersContext } from './Hooks/useUsersContext';
 
@@ -18,6 +19,7 @@ function App() {
                <Route path='/' element={user ? <Home/> : <Navigate to="/login"/>}/>
                <Route path='/Signup' element={!user ? <Signup/> : <Navigate to="/"/>}/>
                <Route path='/Login' element={!user ? <Login/> : <Navigate to="/"/>}/>
+               <Route path='/Workout/:id' element={user ? <Workout/> : <Navigate to="/login"/>}/>
              </Routes>
           </div>
       </BrowserRouter>

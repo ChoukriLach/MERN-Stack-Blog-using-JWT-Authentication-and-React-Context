@@ -1,4 +1,4 @@
-# MERN-Stack-Blog-using-JWT-Authentification-and-React-Context
+# MERN-Stack-Blog-using-JWT-Authentication-and-React-Context
 
 How to run the project :
 
